@@ -1,0 +1,12 @@
+---
+- name: Install python modules on given virthual environment
+  hosts: all
+  #connection: local
+  gather_facts: no
+  ignore_erros: yes
+  tasks:
+  - name: Install Python modules
+    script: './install_python_modules.sh {{ python_venv }} {{ python_module }}'
+    register: install_module
+
+  - debug: var=install_module
